@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="dec.css">
+    <script src="functions.js"></script>
+</head>
+
+<body>
+    
+    <h1>Context Switching - 3 Workstation model</h1>
+    
+    <div class="container">
+        <div id="st-box">
+            <p id="umode">USER MODE</p>
+            <div id="load_process_A" style="overflow-y: scroll; height:313px">
+                <table id="process" style="padding: 10px; width:90%; margin: 10px;"></table>
+            </div>
+            <div id="process_buttons">
+                <button id="prev_process" onclick="process_previous()">Previous</button>
+                <button id="next_process" onclick="process_next()">Next</button>
+            </div>
+        </div>
+        
+        <div id="nd-box">
+            <p id="hardware">HARDWARE</p>
+            <div id="interrupt_section" style="overflow-y: scroll; height:313px">
+                <table id="interrupt" style="padding: 10px; width:90%; margin: 10px;"></table>
+            </div>
+            <div id="hardware_buttons">
+                <button id="start_hardware_button" onclick="start_hardware()">Start</button>
+            </div>
+        </div>
+        
+        <div id="rd-box">
+            <p id="kmode">KERNEL MODE</p>
+            <div id="k-container" style="overflow-y: scroll; height:313px;">
+                <table id="kernel" style="padding: 10px; width:90%; margin: 10px;">
+                </table>
+            </div>
+            <div id="kernel_buttons">
+                <button id="kernelCode_execute" onclick="execute()">Execute</button>
+                <!-- <button id="contxtSwitch" onclick="contextSwitch()">Do context switch</button> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="conatiner2">
+        <div id="cpu">
+            <p id="mycpu">Central processing unit</p>
+            <div class="cpu_details">
+                <table id="cpu_section"></table>
+            </div>
+        </div>
+        <div id="memory">
+            <p id="mymemory">Memory</p>
+            <table id="memTable" style="width: 90%; background-color: peru; color: white; border-radius: 2px; align-self: center; margin-left: 5%; margin-top: 2.5px;"></table>
+        </div>
+        <div id="TrapHandlers">
+            <p id="myTrapHandlers">Interrupt Handlers</p>
+            <div id="handlers"></div>
+        </div>
+        <div id="pcbMenu">
+            <p id="mypcbMenu">PCB Menu</p>
+            <p class="PCB_A">PCB of process A</p>
+            <div class="pcb_A_hide">
+                <table id="pcbA">
+                    <tr>
+                        <td>pid:</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>PC:</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Status:</td>
+                        <td>running</td>
+                    </tr>
+                    <tr>
+                        <td>Registers:</td>
+                        <td> - </td>
+                    </tr>
+                </table>
+            </div>
+            <p class="PCB_B">PCB of process B</p>
+            <div class="pcb_B_hide">
+                <table id="pcbB">
+                    <tr>
+                        <td>pid:</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>PC:</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Status:</td>
+                        <td>ready</td>
+                    </tr>
+                    <tr>
+                        <td>Registers:</td>
+                        <td> - </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="conatiner3">
+        <button id="start_simulation"onclick="start()">Start</button>
+        <button id = "prog_A_code" style="margin-top: 20px; margin-left: 15px; padding: 10px; background-color: #555; color: white; font-weight: bold; cursor: pointer;">program A code</button>
+        <div id="display_A">
+            <p style="background-color: peru; color: white; padding: 10px; font-weight: bolder">C code</p>
+            <p>
+                int main() {</br>
+                    int a = 5;</br>
+                    int b = 10;</br>
+                    int c = a + b;</br>
+                    return c;</br>
+                }
+            </p>
+
+            <p style="background-color: peru; color: white; padding: 10px; font-weight: bolder">Assembly code</p>
+            <p>pushq %rbp // push base pointer on to the stack</p>
+            <p>movq %rsp, %rbp // Setting stack pointer to base pointer</p>
+            <p>movl $5, -12(%rbp)</p>
+            <p>movl $10, -8(%rbp)</p>
+            <p>movl -12(%rbp), %edx</p>
+            <p>movl -8(%rbp), %eax</p>
+            <p>addl %edx, %eax // Addition of two numbers</p>
+            <p>movl %eax, -4(%rbp)</p>
+            <p>movl -4(%rbp), %eax</p>
+            <p>popq %rbp // pop the base pointer</p>
+            <p>ret // return the value of %eax</p>
+        </div>
+        <button id = "prog_B_code" style="margin-top: 20px; margin-left: 15px; padding: 10px; background-color: #555; color: white; font-weight: bold; cursor: pointer;">program B code</button>
+        <div id="display_B">
+            <!-- #include <stdio.h>
+
+                int main()
+                {
+                    int a, b, c;
+                    a = 15;
+                    scanf("%d", &b); // scanf is a function that reads input from the user
+                    c = a + b;
+                    return c;
+                } -->
+            <p style="background-color: peru; color: white; padding: 10px; font-weight: bolder">C code</p>
+            <p>
+                int main() {</br>
+                    int a = 15;</br>
+                    int b;</br>
+                    scanf("%d", &b);</br>
+                    int c = a + b;</br>
+                    return c;</br>
+                }
+            </p>
+            
+            <p style="background-color: peru; color: white; padding: 10px; font-weight: bolder">Assembly code</p>
+            <p>pushq %rbp // push base pointer on to the stack</p>
+            <p>movq %rsp, %rbp // Setting stack pointer to base pointer</p>
+            <p>subq $32, %rsp // allocating 32 bytes of memory on the stack</p>
+            <p>movq %fs:40, %rax // saving the return address</p>
+            <p>movq %rax, -8(%rbp)</p>
+            <p>xorl %eax, %eax</p>
+            <p>movl $15, -16(%rbp)</p>
+            <p>leaq -20(%rbp), %rax</p>
+            <p>movq %rax, %rsi</p>
+            <p>leaq .LC0(%rip), %rdi</p>
+            <p>movl $0, %eax</p>
+            <p>call __isoc99_scanf@PLT // Calling scanf function from the C library</p>
+            <p>movl -20(%rbp), %edx</p>
+            <p>movl -16(%rbp), %eax</p>
+            <p>addl %edx, %eax // Addition of two numbers</p>
+            <p>movl %eax, -12(%rbp)</p>
+            <p>movl -12(%rbp), %eax</p>
+            <p>movq -8(%rbp), %rcx</p>
+            <p>xorq %fs:40, %rcx</p>
+            <p>ret</p>
+        </div>
+        <button id = "cswitch" style="margin-top: 20px; margin-left: 15px; padding: 10px; background-color: #555; color: white; font-weight: bold; cursor: pointer;">context switch code</button>
+        <div id="display_swtch">
+            <p style="background-color: peru; color: white; padding: 10px; font-weight: bolder">Assembly code</p>
+            <p># void swtch(struct context **old, struct context *new);</p>
+            <p>#                                            </p>
+            <p># Save current register context in old </p>
+            <p># and then load register context from new. </p>
+            <p>.globl swtch </p>
+            <p>swtch: </p>
+            <p># Save old registers </p>
+            <p>movl 4(%esp), %eax # put old ptr into eax </p>
+            <p>popl 0(%eax) # save the old IP </p>
+            <p> movl %esp, 4(%eax) # and stack </p>
+            <p> movl %ebx, 8(%eax) # and other registers </p>
+            <p> movl %ecx, 12(%eax) </p>
+            <p> movl %edx, 16(%eax) </p>
+            <p> movl %esi, 20(%eax) </p>
+            <p> movl %edi, 24(%eax) </p>
+            <p> movl %ebp, 28(%eax) </p>
+            <p> # Load new registers </p>
+            <p> movl 4(%esp), %eax # put new ptr into eax </p>
+            <p> movl 28(%eax), %ebp # restore other registers</p>
+            <p> movl 24(%eax), %edi </p>
+            <p> movl 20(%eax), %esi </p>
+            <p> movl 16(%eax), %edx </p>
+            <p> movl 12(%eax), %ecx </p>
+            <p> movl 8(%eax), %ebx </p>
+            <p> movl 4(%eax), %esp # stack is switched here </p>
+            <p> pushl 0(%eax) # return addr put in place </p>
+            <p> ret # finally return into new ctxt</p>
+        </div>  
+    </div>
+    
+</body>
+
+</html>

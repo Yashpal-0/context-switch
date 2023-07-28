@@ -1,0 +1,6 @@
+experiment/simulation/dist/
+experiment/simulation/node_modules/
+experiment/simulation/npm-debug.log*
+experiment/simulation/*.tsbuildinfo
+experiment/simulation/.npm
+experiment/simulation/.eslintcache

@@ -1,0 +1,23 @@
+{
+    "name": "ContextSwitching",
+    "description": "OS VLabs Experiment on Context Switching.",
+    "version": "1.0.0",
+    "author": "OS VLabs",
+    "license": "MIT",
+    "main": ".",
+    "scripts": {
+        "build": "webpack --config webpack.config.js --mode=production",
+        "dev": "webpack --config webpack.config.js --watch --mode=development"
+    },
+    "dependencies": {
+        "@reduxjs/toolkit": "^1.9.5",
+        "react": "^18.0",
+        "react-redux": "^8.1.1"
+    },
+    "devDependencies": {
+        "typescript": "^5.1.6",
+        "webpack": "^5.88.1",
+        "webpack-cli": "^4.10.0",
+        "ts-loader": "^9.4.4"
+    }
+}

@@ -1,0 +1,562 @@
+.container {
+    width: 100%;
+    /* height:150px; */
+    background-color: green;
+    /* padding-top:20px; */
+    /* padding-left:15px; */
+    /* padding-right:15px; */
+}
+
+.container2 {
+    width: 100%;
+    /* height:150px; */
+    background-color: green;
+    /* padding-top:20px; */
+    /* padding-left:15px; */
+    /* padding-right:15px; */
+}
+
+.container3 {
+    width: 50%;
+    /* position: absolute; */
+    
+}
+
+#cpu {
+    float: left;
+    width: 20%;
+    height: 170px;
+    background-color: white;
+    border: solid red;
+    margin-top: 20px;
+    margin-left: 1.5%;
+}
+
+#memory {
+    float: left;
+    width: 20%;
+    height: 170px;
+    background-color: white;
+    border: solid peru;
+    margin-top: 20px;
+    margin-left: 1.5%;
+}
+
+#TrapHandlers {
+    float: left;
+    width: 20%;
+    height: 170px;
+    background-color: white;
+    border: solid rosybrown;
+    margin-top: 20px;
+    margin-left: 1.5%;
+}
+
+#pcbMenu {
+    float: left;
+    width: 20%;
+    height: 170px;
+    background-color: white;
+    border: solid olive;
+    margin-top: 20px;
+    margin-left: 1.5%;
+}
+
+#mycpu {
+    text-align: center;
+    font-weight: bold;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+#mymemory {
+    text-align: center;
+    font-weight: bold;
+    background-color: peru;
+    color: white;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+#myTrapHandlers {
+    text-align: center;
+    font-weight: bold;
+    background-color: rosybrown;
+    color: white;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+#mypcbMenu {
+    text-align: center;
+    font-weight: bold;
+    background-color: olive;
+    color: white;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.PCB_A {
+    border: none;
+    padding: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: olive;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.pcb_A_hide {
+    display: none;
+    width: 250px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    margin-left: 70px;
+}
+
+.pcb_A_hide::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+.PCB_A:hover + .pcb_A_hide {
+    display: block;
+}
+
+.PCB_B {
+    border: none;
+    padding: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: olive;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.pcb_B_hide {
+    display: none;
+    width: 250px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    margin-left: 70px;
+}
+
+#display_A {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background-color: #555;
+    color: whitesmoke;
+    padding: 20px;
+    border-radius: 10px;
+    height: 700px;
+    overflow-y: scroll;
+}
+#prog_A_code:hover + #display_A {
+    display: block;
+}
+
+#display_B {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background-color: #555;
+    color: whitesmoke;
+    padding: 20px;
+    border-radius: 10px;
+    height: 700px;
+    overflow-y: scroll;
+    
+}
+#prog_B_code:hover + #display_B {
+    display: block;
+}
+
+#display_swtch {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background-color: #555;
+    color: whitesmoke;
+    padding: 20px;
+    border-radius: 10px;
+    height: 700px;
+    overflow-y: scroll;
+}
+#cswitch:hover + #display_swtch {
+    display: block;
+}
+.pcb_A_hide::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+.PCB_B:hover + .pcb_B_hide {
+    display: block;
+}
+
+#st-box {
+    float: left;
+    width: 30%;
+    height: 400px;
+    background-color: white;
+    border: solid dodgerblue;
+    margin-left: 1.5%;
+}
+
+#nd-box {
+    float: left;
+    width: 30%;
+    height: 400px;
+    background-color: white;
+    border: solid orange;
+    margin-left: 3%;
+}
+
+#rd-box {
+    float: left;
+    width: 30%;
+    height: 400px;
+    background-color: white;
+    border: solid green;
+    margin-left: 3%;
+}
+
+#umode {
+    text-align: center;
+    font-weight: bold;
+    background-color: dodgerblue;
+    color: white;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+#hardware {
+    text-align: center;
+    font-weight: bold;
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+#kmode {
+    text-align: center;
+    font-weight: bold;
+    background-color: green;
+    color: white;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+#process {
+    scroll-behavior: auto;
+    border: none;
+    padding: 7px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#interrupt {
+    scroll-behavior: auto;
+    border: none;
+    padding: 7px;
+}
+
+#process_buttons {
+    text-align: center;
+    font-weight: bold;
+    background-color: dodgerblue;
+    color: white;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+#prev_process {
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    color: dodgerblue;
+    border: none;
+    border-radius: 5px;
+}
+
+#next_process {
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    color: dodgerblue;
+    border: none;
+    border-radius: 5px;
+}
+
+/* hover */
+#prev_process:hover {
+    background-color: dodgerblue;
+    color: white;
+    cursor: pointer;
+}
+
+#next_process:hover {
+    background-color: dodgerblue;
+    color: white;
+    cursor: pointer;
+}
+
+#hardware_buttons {
+    text-align: center;
+    font-weight: bold;
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+#prev_hardware_instruction {
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    color: orange;
+    border: none;
+    border-radius: 5px;
+    margin-right: 4px;
+}
+
+#next_hardware_instruction {
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    color: orange;
+    border: none;
+    border-radius: 5px;
+}
+
+/* hover */
+#prev_hardware_instruction:hover {
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+#next_hardware_instruction:hover {
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+#start_hardware_button {
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    color: orange;
+    border: none;
+    border-radius: 5px;
+}
+
+#start_hardware_button:hover {
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+#kernel {
+    scroll-behavior: auto;
+    border: none;
+    padding: 7px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#kernel_buttons {
+    text-align: center;
+    font-weight: bold;
+    background-color: green;
+    color: white;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+#kernelCode_execute {
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    color: green;
+    border: none;
+    border-radius: 5px;
+}
+
+#contxtSwitch {
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    color: green;
+    border: none;
+    border-radius: 5px;
+}
+
+#next_kernel_instruction {
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    color: green;
+    border: none;
+    border-radius: 5px;
+}
+
+/* hover */
+#kernelCode_execute:hover {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+#contxtSwitch:hover {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+#next_kernel_instruction:hover {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+
+#cpu_section {
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.spinner {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border-top-color: #000;
+    animation: spin 1s infinite ease-in-out;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#timerTrap {
+    width: 90%; 
+    background-color: rosybrown; 
+    color: white; 
+    border-radius: 10px; 
+    align-self: center; 
+    margin-left: 5%; 
+    margin-top: 3px;
+}
+
+#readTrap {
+    width: 90%; 
+    background-color: rosybrown; 
+    color: white; 
+    border-radius: 10px; 
+    align-self: center; 
+    margin-left: 5%; 
+    margin-top: 3px;
+}
+
+#exitTrap {
+    width: 90%; 
+    background-color: rosybrown; 
+    color: white; 
+    border-radius: 10px; 
+    align-self: center; 
+    margin-left: 5%; 
+    margin-top: 3px;
+}
+
+#start_simulation {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    font-weight: bold;
+    position: absolute;
+    left: 750px;
+    top: 750px;
+}
+
+#start_simulation:hover {
+    background-color: greenyellow;
+    color: darkgreen;
+    border: none;
+    font-weight: bolder;
+}
